@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.world.timezone.core">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.world.timezone.converter.core.SplashActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.world.timezone.converter.core.MainActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_main" />
+        <activity
+            android:name="com.world.timezone.converter.core.SearchActivity"
+            android:label="@string/title_activity_search"
+            android:theme="@android:style/Theme.Dialog"
+            android:windowSoftInputMode="stateVisible|adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.world.timezone.converter.core.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.world.timezone.converter.core.HelpActivity"
+            android:label="@string/title_activity_help">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.world.timezone.converter.core.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.world.timezone.converter.core.TimeZoneWidgetConfigure"
+            android:enabled="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/select_city"
+            android:theme="@android:style/Theme.Dialog"
+            tools:ignore="ExportedActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name="com.world.timezone.converter.core.TimeZoneWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_provider_info" />
+        </receiver>
+
+        <service
+            android:name="com.world.timezone.converter.core.TimeZoneWidgetService"
+            android:enabled="true" />
+
+        <activity
+            android:name="com.world.timezone.converter.core.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:parentActivityName="com.world.timezone.converter.core.SplashActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.world.timezone.converter.core.SplashActivity" />
+        </activity>
+        <activity
+            android:name="com.world.timezone.converter.core.RegistrationActivity"
+            android:label="@string/title_activity_registration"
+            android:parentActivityName="com.world.timezone.converter.core.LoginActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.world.timezone.converter.core.LoginActivity" />
+        </activity>
+    </application>
+
+</manifest>
